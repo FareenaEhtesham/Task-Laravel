@@ -3,18 +3,6 @@
 
 @section('content')
 <div class="container">
-<div class="row">
-    <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Users Thought</h2>
-        </div>
-        <div class="pull-right">
-            <a class="btn btn-success" href="{{ route('post.create') }}"> Create New Post</a>
-        </div>
-        <br/>
-    </div>
-</div>
-
 
 @if ($message = Session::get('success'))
 <div class="alert alert-success">
@@ -25,21 +13,18 @@
 {{$i=0}}
 <table class="table table-bordered">
  <tr>
-   <th width="70px">No</th>
-   <th width="200px">Name</th>
-   <th>Description</th>
-   <th width="150px">Action</th>
+   <th>No</th>
+   <th>Name</th>
+   <th>Email</th>
+   <th>Action</th>
  </tr>
- @foreach ($posts as $post)
+ @foreach ($users as $user)
   <tr>
     <td>{{ ++$i }}</td>
-    <td>{{ $post->user->name}}</td>
-    <td>{{ $post->description }}</td>
+    <td>{{ $user->name}}</td>
+    <td>{{ $user->email }}</td>
     <td>
-    <form action="{{ route('post.destroy', $post->id) }}" method="POST">
-        <a href="{{ route('post.show', $post->id) }}">
-          <i class="fas fa-eye"></i>
-        </a>
+    <form action="{{ route('user.destroy', $user->id) }}" method="POST">
         @if(Auth::user()->role == "Admin")
           
             @csrf

@@ -12,8 +12,11 @@
       <footer class="blockquote-footer">post by <cite title="Source Title">{{$post->user->name}}</cite></footer>
     </blockquote>
   <br/><br/>
+
   <!-- Comments Section -->
+  <!-- Display Comments -->
   <h4 style="color:blue">Comments</h4>
+
     @foreach($comments as $comment)
         <strong>{{ $comment->user->name }}: </strong>
         <span>{{ $comment->comment }}</span>  
@@ -21,7 +24,10 @@
         <footer class="blockquote-footer" style="padding-left:5px"><cite title="Source Title">{{$comment->created_at}}</cite></footer>
         <br/>
     @endforeach
+    
     <hr />
+
+    <!-- Add Comments -->
     <h4 style="color:blue">Add comment</h4>
       <form method="post" action="{{ route('comments.store') }}">
       @csrf

@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Post;
-use App\Models\Comment;
+use App\Models\User;
 
-class PostController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::get();
-        return view('post.index')->with(compact('posts'));
+        $users= User::where('role', 'User')->get();
+        return view('user.index')->with(compact('users'));
     }
 
     /**
@@ -26,7 +25,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('post.create');
+        //
     }
 
     /**
@@ -37,16 +36,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'description'    =>  'required',
-        ]);
-        $post = new Post();
-    	$post->description = $request->description;
-    	$post->user_id = auth()->user()->id;
-    	$post->save();
-
-        return redirect('post')->with('success', 'Post Added successfully.');
-
+        //
     }
 
     /**
@@ -55,10 +45,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
-        $comments = Comment::orderBy('id','DESC')->get();
-        return view('post.show', compact('post','comments'));
+        //
     }
 
     /**
@@ -90,9 +79,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy(User $user)
     {
-        $post->delete();
-        return redirect('post');
+        $user->delete();
+        return redirect('user');
     }
 }

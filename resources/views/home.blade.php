@@ -15,6 +15,16 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    <br/>
+
+                    @if(Auth::user()->role == "Admin")
+                        <a href="{{route('user.index')}}"> Display All Users </a>
+                    @endif
+                     <br/>
+                    @if(Auth::user()->role == "Admin")
+                        <a href="{{route('post.index')}}"> Display All Post </a>
+                    @endif
+
                 </div>
             </div>
         </div>
