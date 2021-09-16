@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Post;
 use App\Models\Comment;
 
-class PostController extends Controller
+class CommentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::get();
-        return view('post.index')->with(compact('posts'));
+        //
     }
 
     /**
@@ -26,7 +24,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('post.create');
+        //
     }
 
     /**
@@ -38,15 +36,15 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'description'    =>  'required',
+            'comment'=>'required',
         ]);
-        $post = new Post();
-    	$post->description = $request->description;
-    	$post->user_id = auth()->user()->id;
-    	$post->save();
-
-        return redirect('post')->with('success', 'Post Added successfully.');
-
+   
+        $input = $request->all();
+        $input['user_id'] = auth()->user()->id;
+    
+        Comment::create($input);
+   
+        return back();
     }
 
     /**
@@ -55,10 +53,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
-        $comments = Comment::orderBy('id','DESC')->get();
-        return view('post.show', compact('post','comments'));
+        //
     }
 
     /**
