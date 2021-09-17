@@ -6,11 +6,13 @@
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Users Thought</h2>
+            <h2>Users Post/Thoughts</h2>
         </div>
+        @if(Auth::user()->role == "User")
         <div class="pull-right">
             <a class="btn btn-success" href="{{ route('post.create') }}"> Create New Post</a>
         </div>
+        @endif
         <br/>
     </div>
 </div>

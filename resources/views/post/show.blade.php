@@ -17,11 +17,13 @@
   <!-- Display Comments -->
   <h4 style="color:blue">Comments</h4>
 
-    @foreach($comments as $comment)
+    @foreach($post->comments as $comment)
         <strong>{{ $comment->user->name }}: </strong>
         <span>{{ $comment->comment }}</span>  
         <br/>      
-        <footer class="blockquote-footer" style="padding-left:5px"><cite title="Source Title">{{$comment->created_at}}</cite></footer>
+        <footer class="blockquote-footer" style="padding-left:5px">
+          <cite title="Source Title">{{$comment->created_at}}</cite>\
+        </footer>
         <br/>
     @endforeach
     
