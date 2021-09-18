@@ -32,7 +32,7 @@
     <td>{{ $user->email }}</td>
     <td>
     <form action="{{ route('user.destroy', $user->id) }}" method="POST">
-        @if(Auth::user()->role == "Admin")
+        @if(Auth::user()->role_id == 1)
           
             @csrf
             @method('DELETE')

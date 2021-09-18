@@ -30,7 +30,7 @@
                         </span>
                     </h4>
 
-                    @if(Auth::user()->role == "User")
+                    @if(Auth::user()->role_id == 2)
                     <blockquote class="blockquote mb-0">
                         <a href="{{route('post.index')}}">
                         Create Post or want to
@@ -40,14 +40,14 @@
                     @endif
                     <br/>
 
-                    @if(Auth::user()->role == "Admin")
+                    @if(Auth::user()->role_id == 1)
                     <blockquote class="blockquote mb-0">
                         <a href="{{route('user.index')}}"> Review All Users </a>
                     </blockquote>
                         @endif
 
                     <blockquote class="blockquote mb-0">
-                    @if(Auth::user()->role == "Admin")
+                    @if(Auth::user()->role_id == 1)
                         <a href="{{route('post.index')}}"> Review All Post </a>
                     </blockquote>
                         @endif

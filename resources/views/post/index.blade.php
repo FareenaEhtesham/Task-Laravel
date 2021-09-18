@@ -8,7 +8,7 @@
         <div class="pull-left">
             <h2>Users Post/Thoughts</h2>
         </div>
-        @if(Auth::user()->role == "User")
+        @if(Auth::user()->role_id == 2)
         <div class="pull-right">
             <a class="btn btn-success" href="{{ route('post.create') }}"> Create New Post</a>
         </div>
@@ -42,7 +42,7 @@
         <a href="{{ route('post.show', $post->id) }}">
           <i class="fas fa-eye"></i>
         </a>
-        @if(Auth::user()->role == "Admin")
+        @if(Auth::user()->role_id == 1)
           
             @csrf
             @method('DELETE')
