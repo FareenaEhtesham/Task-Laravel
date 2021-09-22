@@ -17,7 +17,6 @@
 </div>
 @endif
 
-{{$i=0}}
 <table class="table table-bordered">
  <tr>
    <th>No</th>
@@ -25,7 +24,7 @@
    <th>Email</th>
    <th>Action</th>
  </tr>
- @foreach ($users as $user)
+ @foreach ($users as $i=>$user)
   <tr>
     <td>{{ ++$i }}</td>
     <td>{{ $user->name}}</td>

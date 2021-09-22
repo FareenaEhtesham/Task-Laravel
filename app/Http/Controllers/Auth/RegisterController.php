@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/profile';
+    protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -38,7 +38,14 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        if(Auth::check() && Auth::user()->role->id == 1){
+            $this->redirectTo = route('admin.profile');
+            }
+            else{
+                $this->redirectTo = route('user.profile');
+            }
+
+        $this->middleware('guest')->except('logout');
     }
 
     /**

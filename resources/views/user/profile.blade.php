@@ -25,33 +25,13 @@
                         </span>
                     </h4>
 
-                    <h4>Role:
-                        <span style="font-size:20px;font-weight:bold;padding-left:10px">{{Auth::user()->role}}
-                        </span>
-                    </h4>
-
-                    @if(Auth::user()->role_id == 2)
                     <blockquote class="blockquote mb-0">
                         <a href="{{route('post.index')}}">
                         Create Post or want to
                         write your thoughts?
                         </a>
                     </blockquaote>
-                    @endif
-                    <br/>
-
-                    @if(Auth::user()->role_id == 1)
-                    <blockquote class="blockquote mb-0">
-                        <a href="{{route('user.index')}}"> Review All Users </a>
-                    </blockquote>
-                        @endif
-
-                    <blockquote class="blockquote mb-0">
-                    @if(Auth::user()->role_id == 1)
-                        <a href="{{route('post.index')}}"> Review All Post </a>
-                    </blockquote>
-                        @endif
-                    
+                    <br/>                    
 
                 </div>
             </div>

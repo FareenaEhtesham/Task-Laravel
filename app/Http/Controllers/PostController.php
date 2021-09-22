@@ -57,8 +57,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        $comments = Comment::orderBy('id','DESC')->get();
-        return view('post.show', compact('post','comments'));
+        return view('post.show', compact('post'));
     }
 
     /**

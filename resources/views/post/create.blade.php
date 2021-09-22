@@ -16,7 +16,7 @@
                                     <div class="form-group">
                                         <label class="floating-label" for="description">Description</label>
                                         <p>What are your thoughts about Software Engineering? </p>
-                                        <input type="text" class="form-control" id="description" name="description">
+                                        <input type="text" class="form-control" id="description" name="description" required>
                                     </div>
                                 </div>
                                 <div class="col-sm-12">

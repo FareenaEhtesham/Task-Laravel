@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Comment;
 
-class CommentsController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class CommentsController extends Controller
      */
     public function index()
     {
-        //
+        return view('user.profile');
     }
 
     /**
@@ -35,16 +35,7 @@ class CommentsController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'comment'=>'required',
-        ]);
-   
-        $input = $request->all();
-        $input['user_id'] = auth()->user()->id;
-    
-        Comment::create($input);
-   
-        return back();
+        //
     }
 
     /**
@@ -87,9 +78,8 @@ class CommentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $comment)
+    public function destroy($id)
     {
-        $comment->delete();
-        return redirect('post');
+        //
     }
 }
