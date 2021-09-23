@@ -26,6 +26,7 @@ class PostController extends Controller
      */
     public function create()
     {
+        $this->authorize('create_post');
         return view('post.create');
     }
 
@@ -40,11 +41,9 @@ class PostController extends Controller
         $request->validate([
             'description'    =>  'required',
         ]);
-        $post = new Post();
-    	$post->description = $request->description;
-    	$post->user_id = auth()->user()->id;
-    	$post->save();
-
+        $post = $request->all();
+        $post['user_id'] = auth()->user()->id;
+        Post::create($post);
         return redirect('post')->with('success', 'Post Added successfully.');
 
     }
@@ -91,6 +90,7 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+        $this->authorize('delete_post');
         $post->delete();
         return redirect('post');
     }

@@ -25,8 +25,13 @@
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                        <a href="{{ url('/profile') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Profile</a>
-                    @else
+                    @if(Auth::user()->role_id==1)
+                        <a href="{{ url('/admin/profile') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Profile</a>
+                    @endif
+                    @if(Auth::user()->role_id==2)
+                    <a href="{{ url('/user/profile') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Profile</a>
+                    @endif
+                        @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
 
                         @if (Route::has('register'))

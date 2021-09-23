@@ -31,8 +31,7 @@
     <td>{{ $user->email }}</td>
     <td>
     <form action="{{ route('user.destroy', $user->id) }}" method="POST">
-        @if(Auth::user()->role_id == 1)
-          
+          @can('delete_user')          
             @csrf
             @method('DELETE')
 
@@ -40,7 +39,7 @@
                   <i class="fas fa-trash text-danger"></i>
               </button>
           </form>
-        @endif
+        @endcan
       </td>
   </tr>
  @endforeach

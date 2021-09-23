@@ -8,11 +8,11 @@
         <div class="pull-left">
             <h2>Users Post/Thoughts</h2>
         </div>
-        @if(Auth::user()->role_id == 2)
+        @can('create_post')
         <div class="pull-right">
             <a class="btn btn-success" href="{{ route('post.create') }}"> Create New Post</a>
         </div>
-        @endif
+        @endcan
         <br/>
     </div>
 </div>
@@ -41,8 +41,7 @@
         <a href="{{ route('post.show', $post->id) }}">
           <i class="fas fa-eye"></i>
         </a>
-        @if(Auth::user()->role_id == 1)
-          
+          @can('delete_post')
             @csrf
             @method('DELETE')
 
@@ -50,7 +49,7 @@
                   <i class="fas fa-trash text-danger"></i>
               </button>
           </form>
-        @endif
+          @endcan
       </td>
   </tr>
  @endforeach

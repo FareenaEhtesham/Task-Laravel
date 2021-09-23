@@ -14,6 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
+        $this->authorize('view_user');
         $users= User::where('role_id', 2)->get();
         return view('user.index')->with(compact('users'));
     }
@@ -81,6 +82,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        $this->authorize('delete_user');
         $user->delete();
         return redirect('user');
     }

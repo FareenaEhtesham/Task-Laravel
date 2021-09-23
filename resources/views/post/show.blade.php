@@ -25,10 +25,8 @@
         <footer class="blockquote-footer" style="padding-left:5px">
           <cite title="Source Title">{{$comment->created_at}}</cite>
         </footer>
-        <br/>
+        @can('delete_comment')
         <form action="{{ route('comments.destroy', $comment->id) }}" method="POST">
-        @if(Auth::user()->role_id == 1)
-          
             @csrf
             @method('DELETE')
 
@@ -36,7 +34,7 @@
                   <i class="fas fa-trash text-danger"></i>
               </button>
           </form>
-        @endif
+          @endcan
     @endforeach
     
     <hr />
